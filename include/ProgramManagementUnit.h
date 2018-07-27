@@ -12,6 +12,15 @@ template<std::size_t program_space>
 class ProgramManagementUnit
 {
 public: // Methods
+  ProgramManagementUnit()
+  {
+    for(BYTE i : markers)
+    { i = 0; }
+
+    for(BYTE i : program)
+    { i = 0; }
+  }
+
   void loadProgram(const std::vector<BYTE>& input_program)
   {
     program_size = input_program.size();
@@ -29,13 +38,12 @@ public: // Methods
   {
     if(program_size > program_counter)
     { return program[program_counter++]; }
-
-    return OP_STOP;
+    else { return OP_STOP; }
   }
 
   WORD getWord()
   {
-    return (static_cast<WORD>(getByte()) << 8) + 
+    return (static_cast<WORD>(getByte()) << 8) +
             static_cast<WORD>(getByte());
   }
 
