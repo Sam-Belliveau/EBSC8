@@ -3,7 +3,6 @@
 
 /*** Extentions ***/
 #include "Console.h"
-// #include "Display.h" NOT FUNCTIONABLE
 
 /*** Definitions ***/
 #include "TypeNames.h"

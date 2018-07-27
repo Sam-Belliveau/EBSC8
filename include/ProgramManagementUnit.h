@@ -1,14 +1,17 @@
 #ifndef PROGRAMMANAGMENTUNIT_H
 #define PROGRAMMANAGMENTUNIT_H
 
+/*** Libraries ***/
 #include <vector>
+
+/*** Definitions ***/
 #include "InstructionSet.h"
 #include "TypeNames.h"
 
 template<std::size_t program_space>
 class ProgramManagementUnit
 {
-public:
+public: // Methods
   void loadProgram(const std::vector<BYTE>& input_program)
   {
     program_size = input_program.size();
@@ -30,16 +33,22 @@ public:
     return OP_STOP;
   }
 
+  WORD getWord()
+  {
+    return (static_cast<WORD>(getByte()) << 8) + 
+            static_cast<WORD>(getByte());
+  }
+
   void setMarker(const BYTE id)
   { markers[id] = program_counter; }
-
 
   void goToMarker(const BYTE id)
   { program_counter = markers[id]; }
 
+public: // Variables
   WORD program_counter = 0;
 
-private:
+private: // Variables
   WORD program_size = 0;
   WORD markers[0x100];
   BYTE program[program_space];

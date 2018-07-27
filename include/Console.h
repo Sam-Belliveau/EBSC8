@@ -1,9 +1,14 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
+/*** Libraries ***/
 #include <iostream>
+
+/*** Definitions ***/
 #include "TypeNames.h"
 
+// The reason the console is an object is because
+// The Classes EBSC8 Contains Are Like Devices
 class Console
 {
 public: // Methods
