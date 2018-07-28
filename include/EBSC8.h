@@ -16,12 +16,20 @@
 class EBSC
 {
 public: // Methods
+  void startProgram()
+  {
+    running = true;
+    while(running)
+    {
+      runNextOPCODE();
+    }
+  }
 
   void runNextOPCODE();
 
 public: // Variables
   // Managers
-  MemoryManagementUnit<0x100, 0x10000> MMU;
+  MemoryManagementUnit<0x8000> MMU;
   ProgramManagementUnit<0x10000> PMU;
 
   // Extentions
@@ -29,6 +37,7 @@ public: // Variables
 
   // Flags
   bool running = false;
+  bool unknown_opcode = false;
 };
 
 #endif
