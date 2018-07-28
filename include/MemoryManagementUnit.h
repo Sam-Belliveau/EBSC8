@@ -11,11 +11,15 @@ struct RegisterLayout
   bool flag = false;
   BYTE a = 0; BYTE b = 0;
 
-  /* Math Registers */
-  BYTE c = 0; BYTE d = 0;
+  /* Math Register */
+  BYTE c = 0;
+
+  /* Input Regester */
+  BYTE d = 0;
 
   /* General Registers */
-  BYTE e = 0; BYTE f = 0;
+  BYTE e = 0;
+  BYTE f = 0;
 
   /* Pointer Register */
   WORD pt = 0;
@@ -29,6 +33,12 @@ public: // Methods
   {
     for(BYTE i : ram)
     { i = 0x00; }
+
+    reg.flag = false;
+    reg.a = 0; reg.b = 0;
+    reg.c = 0; reg.d = 0;
+    reg.e = 0; reg.f = 0;
+    reg.pt = 0;
   }
 
   BYTE& getMemory(const WORD pointer)

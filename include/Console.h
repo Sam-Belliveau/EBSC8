@@ -22,10 +22,20 @@ public: // Methods
   { std::cout << static_cast<char>(input); }
 
   BYTE getNum()
-  { signed out; std::cin >> out; return static_cast<BYTE>(out); }
+  {
+    signed out; std::cin >> out;
+    std::cin.clear();
+    std::cin.ignore(0xffff, '\n');
+    return static_cast<BYTE>(out);
+  }
 
   BYTE getChar()
-  { char out; std::cin >> out; return static_cast<BYTE>(out); }
+  {
+    char out; std::cin >> out;
+    std::cin.clear();
+    std::cin.ignore(0xffff, '\n');
+    return static_cast<BYTE>(out);
+  }
 };
 
 #endif

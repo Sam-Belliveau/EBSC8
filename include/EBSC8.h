@@ -20,9 +20,8 @@ public: // Methods
   {
     running = true;
     while(running)
-    {
-      runNextOPCODE();
-    }
+    { runNextOPCODE(); }
+    return;
   }
 
   void runNextOPCODE();

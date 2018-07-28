@@ -108,17 +108,93 @@ void EBSC::runNextOPCODE()
   { MMU.reg.flag = !MMU.reg.flag; }
 
   else if (OPCODE == OP_ALTB)
-  { MMU.reg.flag = MMU.reg.a < MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a < MMU.reg.b); }
   else if (OPCODE == OP_AGTB)
-  { MMU.reg.flag = MMU.reg.a > MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a > MMU.reg.b); }
   else if (OPCODE == OP_ALEB)
-  { MMU.reg.flag = MMU.reg.a <= MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a <= MMU.reg.b); }
   else if (OPCODE == OP_AGEB)
-  { MMU.reg.flag = MMU.reg.a <= MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a >= MMU.reg.b); }
   else if (OPCODE == OP_AEQB)
-  { MMU.reg.flag = MMU.reg.a == MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a == MMU.reg.b); }
   else if (OPCODE == OP_ANEB)
-  { MMU.reg.flag = MMU.reg.a != MMU.reg.b; }
+  { MMU.reg.flag = (MMU.reg.a != MMU.reg.b); }
+
+  /*** Math ***/
+  else if (OPCODE == OP_CINC)
+  { MMU.reg.c++; }
+  else if (OPCODE == OP_CDEC)
+  { MMU.reg.c--; }
+
+  else if (OPCODE == OP_CADI)
+  { MMU.reg.c += PMU.getByte(); }
+  else if (OPCODE == OP_CADR)
+  { MMU.reg.c += MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CADP)
+  { MMU.reg.c += MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CSBI)
+  { MMU.reg.c -= PMU.getByte(); }
+  else if (OPCODE == OP_CSBR)
+  { MMU.reg.c -= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CSBP)
+  { MMU.reg.c -= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CMLI)
+  { MMU.reg.c *= PMU.getByte(); }
+  else if (OPCODE == OP_CMLR)
+  { MMU.reg.c *= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CMLP)
+  { MMU.reg.c *= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CDII)
+  { MMU.reg.c /= PMU.getByte(); }
+  else if (OPCODE == OP_CDIR)
+  { MMU.reg.c /= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CDIP)
+  { MMU.reg.c /= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CMDI)
+  { MMU.reg.c %= PMU.getByte(); }
+  else if (OPCODE == OP_CMDR)
+  { MMU.reg.c %= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CMDP)
+  { MMU.reg.c %= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CXRI)
+  { MMU.reg.c ^= PMU.getByte(); }
+  else if (OPCODE == OP_CXRR)
+  { MMU.reg.c ^= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CXRP)
+  { MMU.reg.c ^= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CORI)
+  { MMU.reg.c |= PMU.getByte(); }
+  else if (OPCODE == OP_CORR)
+  { MMU.reg.c |= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CORP)
+  { MMU.reg.c |= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CANI)
+  { MMU.reg.c &= PMU.getByte(); }
+  else if (OPCODE == OP_CANR)
+  { MMU.reg.c &= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CANP)
+  { MMU.reg.c &= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CSLI)
+  { MMU.reg.c <<= PMU.getByte(); }
+  else if (OPCODE == OP_CSLR)
+  { MMU.reg.c <<= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CSLP)
+  { MMU.reg.c <<= MMU.getMemory(MMU.reg.pt); }
+
+  else if (OPCODE == OP_CSRI)
+  { MMU.reg.c >>= PMU.getByte(); }
+  else if (OPCODE == OP_CSRR)
+  { MMU.reg.c >>= MMU.getMemory(PMU.getWord()); }
+  else if (OPCODE == OP_CSRP)
+  { MMU.reg.c >>= MMU.getMemory(MMU.reg.pt); }
 
   /*** Extentions ***/
   else if (OPCODE == OP_PUPA)
@@ -136,11 +212,11 @@ void EBSC::runNextOPCODE()
   { terminal.printChar(MMU.getMemory(PMU.getWord())); }
 
   else if (OPCODE == OP_PUPR)
-  { terminal.printUnsigned(PMU.getWord()); }
+  { terminal.printUnsigned(PMU.getByte()); }
   else if (OPCODE == OP_PSPR)
-  { terminal.printSigned(PMU.getWord()); }
+  { terminal.printSigned(PMU.getByte()); }
   else if (OPCODE == OP_PCPR)
-  { terminal.printChar(PMU.getWord()); }
+  { terminal.printChar(PMU.getByte()); }
   else if (OPCODE == OP_PNTS)
   {
     BYTE temp_char = PMU.getByte();

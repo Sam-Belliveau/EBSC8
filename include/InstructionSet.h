@@ -50,30 +50,76 @@
 #define OP_STPA 0x2D // Set Pointers Ram Address
 
 /*** Comparison Operators ***/
-#define OP_TONF 0x2E // Turn On Flag
-#define OP_TOFF 0x2F // Turn Off Flag
-#define OP_FLPF 0x30 // Flip Flag
+#define OP_TONF 0x30 // Turn On Flag
+#define OP_TOFF 0x31 // Turn Off Flag
+#define OP_FLPF 0x32 // Flip Flag
 
-#define OP_ALTB 0x31 // Turn On Flag If A Is Less Than B
-#define OP_AGTB 0x32 // Turn On Flag If A Is Greater Than B
-#define OP_ALEB 0x33 // Turn On Flag If A Is Less Than Or Equal To B
-#define OP_AGEB 0x34 // Turn On Flag If A Is Greater Than Or Equal To B
-#define OP_AEQB 0x35 // Turn On Flag If A Is Equal To B
-#define OP_ANEB 0x36 // Turn On Flag If A Is Not Equal To B
+#define OP_ALTB 0x33 // Turn On Flag If A Is Less Than B
+#define OP_AGTB 0x34 // Turn On Flag If A Is Greater Than B
+#define OP_ALEB 0x35 // Turn On Flag If A Is Less Than Or Equal To B
+#define OP_AGEB 0x36 // Turn On Flag If A Is Greater Than Or Equal To B
+#define OP_AEQB 0x37 // Turn On Flag If A Is Equal To B
+#define OP_ANEB 0x38 // Turn On Flag If A Is Not Equal To B
+
+/*** Math ***/
+#define OP_CINC 0x40 // Increment Register C By One
+#define OP_CDEC 0x41 // Decrement Register C By One
+
+#define OP_CADI 0x42 // Add To Register C
+#define OP_CADR 0x43 // Add Ram Address To Register C
+#define OP_CADP 0x44 // Add Pointers Ram Address To Register C
+
+#define OP_CSBI 0x45 // Sub From Register C
+#define OP_CSBR 0x46 // Sub Ram Address From Register C
+#define OP_CSBP 0x47 // Sub Pointers Ram Address From Register C
+
+#define OP_CMLI 0x48 // Mul Register C
+#define OP_CMLR 0x49 // Mul Ram Address To Register C
+#define OP_CMLP 0x4A // Mul Pointers Ram Address To Register C
+
+#define OP_CDII 0x4B // Divide Register C
+#define OP_CDIR 0x4C // Divide Register C By Ram Address
+#define OP_CDIP 0x4D // Divide Register C By Pointers Ram Address
+
+#define OP_CMDI 0x4E // Modulo Register C
+#define OP_CMDR 0x4F // Modulo Register C By Ram Address
+#define OP_CMDP 0x50 // Modulo Register C By Pointers Ram Address
+
+#define OP_CXRI 0x51 // Register C Xor
+#define OP_CXRR 0x52 // Register C Xor Ram Address
+#define OP_CXRP 0x53 // Register C Xor Pointers Ram Address
+
+#define OP_CORI 0x54 // Register C or
+#define OP_CORR 0x55 // Register C or Ram Address
+#define OP_CORP 0x56 // Register C or Pointers Ram Address
+
+#define OP_CANI 0x57 // Register C and
+#define OP_CANR 0x58 // Register C and Ram Address
+#define OP_CANP 0x59 // Register C and Pointers Ram Address
+
+#define OP_CSLI 0x5A // Shift Register C Left By
+#define OP_CSLR 0x5B // Shift Register C Left By Ram Address
+#define OP_CSLP 0x5C // Shift Register C Left By Pointers Ram Address
+
+#define OP_CSRI 0x5D // Shift Register C Right By
+#define OP_CSRR 0x5E // Shift Register C Right By Ram Address
+#define OP_CSRP 0x5F // Shift Register C Right By Pointers Ram Address
 
 /*** Extentions ***/
-#define OP_PUPA 0xf0 // Print Unsigned Integer From Pointers Ram Address
-#define OP_PSPA 0xf1 // Print Signed Integer From Pointers Ram Address
-#define OP_PCPA 0xf2 // Print Char From Pointers Ram Address
+#define OP_PUPA 0xF0 // Print Unsigned Integer From Pointers Ram Address
+#define OP_PSPA 0xF1 // Print Signed Integer From Pointers Ram Address
+#define OP_PCPA 0xF2 // Print Char From Pointers Ram Address
 
-#define OP_PURM 0xf3 // Print Unsigned Integer From Ram Address
-#define OP_PSRM 0xf4 // Print Signed Integer From Ram Address
-#define OP_PCRM 0xf5 // Print Char From Ram Address
+#define OP_PURM 0xF3 // Print Unsigned Integer From Ram Address
+#define OP_PSRM 0xF4 // Print Signed Integer From Ram Address
+#define OP_PCRM 0xF5 // Print Char From Ram Address
 
-#define OP_PUPR 0xf6 // Print Unsigned Integer From Program
-#define OP_PSPR 0xf7 // Print Signed Integer From Program
-#define OP_PCPR 0xf8 // Print Char From From Program
-#define OP_PNTS 0xf9 // Print Null Terminated String
+#define OP_PUPR 0xF6 // Print Unsigned Int From Program
+#define OP_PSPR 0xF7 // Print Signed Int From Program
+#define OP_PCPR 0xF8 // Print Char From From Program
+#define OP_PNTS 0xF9 // Print Null Terminated String
 
+#define OP_INCD 0xFA // Get Character As Input, and Store It In Register D
+#define OP_INUD 0xFA // Get Unsigned Int As Input, and Store It In Register D
 
 #endif
